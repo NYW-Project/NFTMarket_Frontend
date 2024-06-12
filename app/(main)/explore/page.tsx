@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Button, Input, Switch,Accordion, AccordionItem, Pagination } from "@nextui-org/react";
+import { Button, Input, Switch,Accordion, AccordionItem, Pagination, Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 
 import FeaturedIcon from "@/public/icon/featured.svg";
@@ -211,13 +211,18 @@ const Explorer = () => {
         <div className="absolute top-0 w-full h-full bg-transparent/5" />
       </div>
       <div className="container">
-        <div className="flex justify-between items-center mt-10">
+        <div className="flex justify-between items-center my-6">
           <span>
-            <span className="hover:cursor-pointer">Home</span> 
-            <span className={`${selectedNFT==-1?"text-light-blue":""} hover:cursor-pointer`} onClick={() => setSelectedNFT(-1)}> &#187; NFT’s EXPLORE</span>
-            {
-              selectedNFT !== -1 && <span className="text-light-blue hover:cursor-pointer"> &#187; {NFTDetails[selectedNFT - 1].name}</span>
-            }
+            <Breadcrumbs
+              separator=">>"
+              itemClasses={{
+                separator: "px-2"
+              }}
+            >
+              <BreadcrumbItem>Home</BreadcrumbItem>
+              <BreadcrumbItem onClick={() => setSelectedNFT(-1)}>NFT EXPLORE</BreadcrumbItem>
+              { selectedNFT !== -1 && <BreadcrumbItem>{NFTDetails[selectedNFT - 1].name}</BreadcrumbItem> }
+            </Breadcrumbs>
           </span>
           <Switch defaultSelected color="secondary">
             <span>Buy Now</span>
@@ -240,23 +245,23 @@ const Explorer = () => {
                   }
                 />
                 <div className="svg-container flex flex-wrap lg:flex-nowrap gap-2 font-medium">
-                  <span className={`${selectedItem == 0 ? "text-light-blue":""} item`} onClick={() => setSelectedItem(0)}>
+                  <span className={`${selectedItem == 0 ? "text-light-blue":""} item`} role="button" tabIndex={0} onClick={() => setSelectedItem(0)}>
                     <FeaturedIcon className={selectedItem == 0?"fill-light-blue":"fill-white"} />
                     Featured
                   </span>
-                  <span className={`${selectedItem == 1 ? "text-light-blue":""} item`} onClick={() => setSelectedItem(1)}>
+                  <span className={`${selectedItem == 1 ? "text-light-blue":""} item`} role="button" tabIndex={0} onClick={() => setSelectedItem(1)}>
                     <PFPIcon className={selectedItem == 1?"fill-light-blue":"fill-white"} />
                     PFP
                   </span>
-                  <span className={`${selectedItem == 2 ? "text-light-blueeee":""} item`} onClick={() => setSelectedItem(2)}>
+                  <span className={`${selectedItem == 2 ? "text-light-blueeee":""} item`} role="button" tabIndex={0} onClick={() => setSelectedItem(2)}>
                     <VideoIcon className={selectedItem == 2?"fill-light-blue":"fill-white"} />
                     Video
                   </span>
-                  <span className={`${selectedItem == 3 ? "text-light-blue":""} item`} onClick={() => setSelectedItem(3)}>
+                  <span className={`${selectedItem == 3 ? "text-light-blue":""} item`} role="button" tabIndex={0} onClick={() => setSelectedItem(3)}>
                     <MusicIcon className={selectedItem == 3?"fill-light-blue":"fill-white"} />
                     Music
                   </span>
-                  <span className={`${selectedItem == 4 ? "text-light-blue":""} item`} onClick={() => setSelectedItem(4)}>
+                  <span className={`${selectedItem == 4 ? "text-light-blue":""} item`} role="button" tabIndex={0} onClick={() => setSelectedItem(4)}>
                     <NewIcon className={selectedItem == 4?"fill-light-blue":"fill-white"} />
                     Newest
                   </span>
@@ -325,7 +330,7 @@ const Explorer = () => {
                     <PrimaryButton className="w-[300px]" text="View All Voice Models" />
                   </div>
                 </div>
-                <div className="mt-16 mb-20">
+                <div className="mt-16">
                   <h2>Hot</h2>
                   <p>The largest and unique Super rare NFT marketplace For crypto-collectibles</p>
                   <div className="mt-10">

@@ -12,7 +12,7 @@ export default function Footer() {
 
   const logoElement = useMemo(() => {
     return (
-      <img src="/logo.png" className="hover:cursor-pointer" onClick={onLogo} alt="Not Found" />
+      <img src="/logo.png" role="button" tabIndex={0} className="hover:cursor-pointer" onClick={onLogo} alt="Not Found" />
     );
   }, []);
 
@@ -57,7 +57,7 @@ export default function Footer() {
                 </ul>
                 <ul className="flex flex-col gap-2 lg:gap-4">
                   <li className="font-medium">Resources</li>
-                  <li><Link href="/explore" />NFP Documentation</li>
+                  <li><Link href="/explore" />NYW Documentation</li>
                   <li><Link href="/explore" />Logo</li>
                   <li><Link href="/explore" />Terms of Service</li>
                   <li><Link href="/explore" />Privacy Policy</li>
